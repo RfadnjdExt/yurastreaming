@@ -57,6 +57,7 @@ export const GET: RequestHandler = async ({ params, request }) => {
         const headers: {[key: string]: string} = { ...config.headers };
 
         request.headers.forEach((v, k) => {
+            if (v.includes('yurastreaming.vercel.app')) return;
             headers[k] = v;
         });
         const response = await axios.get(collections[id].videos[itag], { headers, responseType: 'stream' });
