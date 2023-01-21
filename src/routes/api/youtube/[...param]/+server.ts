@@ -59,6 +59,8 @@ export const GET: RequestHandler = async ({ params, request }) => {
 
         if (range) headers['Range'] = range;
         console.log(collections[id].videos[itag], headers);
+        const response = await axios.get(collections[id].videos[itag], { responseType: 'stream' });
+        console.log(response)
         return new Response('ok')
         return await fetch(collections[id].videos[itag], { headers });
         // const response = await axios.get(collections[id].videos[itag], { headers, responseType: 'stream' });
