@@ -61,8 +61,7 @@ export const GET: RequestHandler = async ({ params, request }) => {
             headers[k] = v;
         });
         const response = await axios.get(collections[id].videos[itag], { headers, responseType: 'stream' });
-        console.log(response)
-        return new Response('ok')
+        return new Response(response.data, { status: response.status, headers: Object(response.headers) })
         return await fetch(collections[id].videos[itag], { headers });
         // const response = await axios.get(collections[id].videos[itag], { headers, responseType: 'stream' });
         // return new Response(response.data, { headers: { ...Object(response.headers), 'cache-control': 'no-store' }, status: response.status });
