@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MPD
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="urn:mpeg:DASH:schema:MPD:2011"
+  xsi:schemaLocation="urn:mpeg:DASH:schema:MPD:2011"
+  type="static"
+  mediaPresentationDuration="PT8163.787S"
+  minBufferTime="PT1S"
+  profiles="urn:webm:dash:profile:webm-on-demand:2012">
+  <Period id="0" start="PT0S" duration="PT8163.787S" >
+    <AdaptationSet id="0" mimeType="video/mp4" codecs="avc1.640028" width="1920" height="1080" subsegmentAlignment="true" subsegmentStartsWithSAP="1" bitstreamSwitching="true">
+      <Representation id="1" bandwidth="4771434">
+        <BaseURL>/videoplayback?expire=1674085154&amp;ei=wi7IY46KBdOl4-EPo6aOyAk&amp;ip=111.94.166.218&amp;id=o-ALKaJvqmWrOSJOYXgZyDq2gy4s7yaosq8KzBzCBpw-ca&amp;itag=137&amp;aitags=134%2C136%2C137%2C160%2C243&amp;source=youtube&amp;requiressl=yes&amp;mh=EH&amp;mm=32&amp;mn=sn-npoeener&amp;ms=su&amp;mv=m&amp;mvi=4&amp;pl=19&amp;sc=yes&amp;gcr=id&amp;initcwndbps=852500&amp;vprv=1&amp;prv=1&amp;mime=video%2Fmp4&amp;ns=mfiWMELuLBjbsoFK0ekCyRAK&amp;gir=yes&amp;clen=1106676882&amp;dur=8163.737&amp;lmt=1673874272391287&amp;mt=1674063174&amp;keepalive=yes&amp;fexp=24007246&amp;c=WEB&amp;txp=6219224&amp;n=l60uRnWtvgJ2zbQ&amp;sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cgcr%2Cvprv%2Cprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&amp;sig=AOq0QJ8wRQIhAPbNSMWyK9jhtVImWTb-1GHR1V9yRNIFNVNuvpN-KhAlAiA2xiB1Z4H4gf6J2xG3XqkwPAimOit_qeQmRrHnvm837Q%3D%3D&amp;lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Csc%2Cinitcwndbps&amp;lsig=AG3C_xAwRQIhAPmw0x3BFuRFQXcW7nWnfs1dHxjTUKMXIkwjtEU0yay6AiBVRu9UkR3To3WTLsy_ZPZv19xwzVjnC4TQxxRYfCPTtQ%3D%3D</BaseURL>
+        <SegmentBase indexRange="741-19120">
+          <Initialization range="0-740" />
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+    <!-- <AdaptationSet id="1" mimeType="audio/webm" codecs="vorbis" lang="eng" audioSamplingRate="41000" subsegmentStartsWithSAP="1">
+      <Representation id="7" bandwidth="115479">
+        <BaseURL>evq_vorbis_128kbps_cues-5sec_tracks-2.webm</BaseURL>
+        <SegmentBase indexRange="11944509-11947523">
+          <Initialization range="0-4500" />
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet> -->
+  </Period>
+</MPD>
