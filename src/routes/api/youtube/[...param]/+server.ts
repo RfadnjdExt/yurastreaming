@@ -56,7 +56,7 @@ export const GET: RequestHandler = async ({ params, request }) => {
         const range = request.headers.get('range');
         const headers: {[key: string]: string} = { ...config.headers };
 
-        if (range) headers['range'] = range;
+        if (range) headers['Range'] = range;
         console.log(collections[id].videos[itag], headers);
         return await fetch(collections[id].videos[itag], { headers });
         // const response = await axios.get(collections[id].videos[itag], { headers, responseType: 'stream' });
