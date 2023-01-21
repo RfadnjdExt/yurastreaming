@@ -60,6 +60,6 @@ export const GET: RequestHandler = async ({ params, request }) => {
         if (range) headers['range'] = range;
         const response = await axios.get(collections[id].videos[itag], { headers, responseType: 'stream' });
         console.log(response);
-        return new Response(response.data, { headers: { ...Object(response.headers), 'cache-control': 'no-store' }, status: response.status });
+        return new Response(response.request, { headers: { ...Object(response.headers), 'cache-control': 'no-store' }, status: response.status });
     };
 };
