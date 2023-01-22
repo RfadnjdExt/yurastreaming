@@ -1,0 +1,397 @@
+<style>< !--
+
+/* <style id='page-skin-1' type='text/css'><!--
+.ntfC{display:flex;align-items:center;position:relative;min-height:var(--notifH); background:var(--notifU);color:var(--notifC); padding:10px 25px; font-size:13px; transition:var(--trans-1);overflow:hidden} .ntfC .secIn{width:100%; position:relative} .ntfC .c{display:flex;align-items:center} .ntfT{width:100%; padding-right: 15px; text-align:center} .ntfT a{color:var(--notifL); font-weight:700} .ntfI:checked ~ .ntfC{height:0;min-height:0; padding:0; opacity:0;visibility:hidden} .ntfA{display:inline-flex;align-items:center;justify-content:center;text-align:initial} .ntfA >a{flex-shrink:0;white-space:nowrap;display:inline-block; margin:0 10px;padding:8px 12px;border-radius:3px; background:var(--notifL);color:#fffdfc; font-size:12px;font-weight:400; box-shadow:0 10px 8px -8px rgb(0 0 0 / 12%);text-decoration:none}
+<Group description="Width Content">
+<Variable name="nav.width" description="Ukuran navbar" type="length" max="300px" default="220px" />
+<Variable name="side.width" description="Ukuran sidebar" type="length" max="450px" default="396px" />
+<Variable name="header.height" description="Tinggi header" type="length" max="70px" default="60px" />
+</Group>
+<Group description="Colors">
+<Variable name="main.colors" description="Warna utama" type="color" default="#09204C"/>
+<Variable name="text.colors" description="Warna teks" type="color" default="#505050"/>
+<Variable name="alt.text.colors" description="Warna teks alternatif" type="color" default="#989b9f"/>
+<Variable name="link.colors" description="Warna link" type="color" default="#3a7bd5"/>
+<Variable name="link.hover.colors" description="Warna hover link" type="color" default="#989b9f"/>
+<Variable name="link.bg.colors" description="Warna tombol link" type="color" default="#3a7bd5"/>
+</Group>
+<Group description="Icon Colors">
+<Variable name="icon.colors" description="Warna icon" type="color" default="#09204C"/>
+<Variable name="icon.alt.colors" description="Warna icon alternatif" type="color" default="#505050"/>
+<Variable name="icon.sec.colors" description="Warna icon second" type="color" default="#161617"/>
+<Variable name="icon.link.colors" description="Warna icon link" type="color" default="#3a7bd5"/>
+</Group>
+<Group description="Notification (Added by Lumi) [Masih bug]">
+<Variable name="notif.height" description="Notification max height" type="length" max="60px" default="45px"/>
+<Variable name="notif.bg" description="Notification background color" type="color" default="#e1f5fe"/>
+<Variable name="notif.color" description="Notification text color" type="color" default="#08102b"/>
+<Variable name="notif.link" description="Notification link color" type="color" default="#204ecf"/>
+</Group>
+<Group description="Header Colors">
+<Variable name="header.bg.colors" description="Warna background header" type="color" default="#fefefe"/>
+<Variable name="header.text.colors" description="Warna teks header" type="color" default="#161617"/>
+<Variable name="header.text.alt.colors" description="Warna teks alt header" type="color" default="#505050"/>
+<Variable name="header.icon.colors" description="Warna icon header" type="color" default="#161617"/>
+<Variable name="header.icon.alt.colors" description="Warna icon alternatif header" type="color" default="#161617"/>
+<Variable name="header.icon.sec.colors" description="Warna icon second header" type="color" default="#161617"/>
+</Group>
+<Group description="Navbar Colors">
+<Variable name="nav.bg.colors" description="Warna background navbar" type="color" default="#f7f9f8"/>
+<Variable name="nav.text.colors" description="Warna teks navbar" type="color" default="#09204C"/>
+</Group>
+<Group description="Background Colors">
+<Variable name="body.bg.colors" description="Warna background template" type="color" default="#f7f9f8"/>
+</Group>
+<Group description="Night Mode Colors">
+<Variable name="dark.bg.colors" description="Background utama dark mode" type="color" default="#202442"/>
+<Variable name="dark.bg.sec.colors" description="Background kedua dark mode" type="color" default="#2d325a"/>
+<Variable name="dark.bg.hov.colors" description="Background hover dark mode" type="color" default="#282d54"/>
+<Variable name="dark.colors" description="Warna utama dark mode" type="color" default="#fff"/>
+<Variable name="dark.sec.colors" description="Warna kedua dark mode" type="color" default="#989b9f"/>
+<Variable name="dark.link.colors" description="Warna link dan tombol dark mode" type="color" default="#005af0"/>
+</Group>
+<Group description="Fonts">
+<Variable name="body.font" description="Font body" type="font" default="'Nunito Sans', sans-serif"/>
+<Variable name="heading.font" description="Font heading" type="font" default="'Nunito Sans', sans-serif"/>
+</Group>
+*/
+body#layout {
+    width: 922px
+}
+
+body#layout .mainContainer {
+    display: flex;
+}
+
+body#layout header {
+    width: 50%
+}
+
+body#layout .mainbar {
+    width: 65%
+}
+
+body#layout .sidebar {
+    width: 35%
+}
+
+body#layout div#HTML02,
+body#layout div#HTML03 {
+    width: calc(50% - 4px);
+    float: left
+}
+
+body#layout div#HTML03 {
+    float: right
+}
+
+body#layout div.section:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+/* Body Font */
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Nunito Sans Regular'), local('NunitoSans-Regular'), url(https://fonts.gstatic.com/s/nunitosans/v6/pe0qMImSLYBIv1o4X1M8cfe5.woff) format('woff'), url(https://fonts.gstatic.com/s/nunitosans/v6/pe0qMImSLYBIv1o4X1M8ccezI9tScg.woff2) format('woff2')
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Nunito Sans Bold'), local('NunitoSans-Bold'), url(https://fonts.gstatic.com/s/nunitosans/v6/pe03MImSLYBIv1o4X1M8cc8GBv5p.woff) format('woff'), url(https://fonts.gstatic.com/s/nunitosans/v6/pe03MImSLYBIv1o4X1M8cc8GBs5jU1EQVg.woff2) format('woff2')
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Nunito Sans Italic'), local('NunitoSans-Italic'), url(https://fonts.gstatic.com/s/nunitosans/v6/pe0oMImSLYBIv1o4X1M8cce4I90.woff) format('woff'), url(https://fonts.gstatic.com/s/nunitosans/v6/pe0oMImSLYBIv1o4X1M8cce4E9dKdmwp.woff2) format('woff2')
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Nunito Sans Bold Italic'), local('NunitoSans-BoldItalic'), url(https://fonts.gstatic.com/s/nunitosans/v6/pe01MImSLYBIv1o4X1M8cce4G2JvU1c.woff) format('woff'), url(https://fonts.gstatic.com/s/nunitosans/v6/pe01MImSLYBIv1o4X1M8cce4G2JvY10IUql-.woff2) format('woff2')
+}
+
+/* Heading Font */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Poppins Bold'), local('Poppins-Bold'), url(https://fonts.gstatic.com/s/poppins/v13/pxiByp8kv8JHgFVrLCz7V1g.woff) format('woff'), url(https://fonts.gstatic.com/s/poppins/v13/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2) format('woff2')
+}
+
+/* Source Code Font */
+@font-face {
+    font-family: 'Fira Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Fira Mono Regular'), local('FiraMono-Regular'), url(https://fonts.gstatic.com/s/firamono/v9/N0bX2SlFPv1weGeLZDtQIg.woff) format('woff'), url(https://fonts.gstatic.com/s/firamono/v9/N0bX2SlFPv1weGeLZDtgJv7S.woff2) format('woff2');
+}
+
+/* Standar Element */
+*,
+:after,
+:before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+a {
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+    color: #005af0;
+    text-decoration: none
+}
+
+a:hover {
+    color: #767676
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-weight: 700;
+    font-family: Poppins, sans-serif;
+    color: #161617
+}
+
+h1 {
+    font-size: 1.8rem
+}
+
+h2 {
+    font-size: 1.7rem
+}
+
+h3 {
+    font-size: 1.5rem
+}
+
+h4 {
+    font-size: 1.3rem
+}
+
+h5 {
+    font-size: 1.2rem
+}
+
+h6 {
+    font-size: 1.1rem
+}
+
+table {
+    border-spacing: 0
+}
+
+iframe {
+    width: 100%;
+    border: 0
+}
+
+input,
+button,
+select,
+textarea {
+    font: inherit;
+    font-size: 100%;
+    color: inherit;
+    line-height: normal;
+    vertical-align: baseline
+}
+
+img {
+    display: block;
+    position: relative;
+    max-width: 100%;
+    font-size: 10px;
+    color: transparent
+}
+
+svg {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    fill: #161617
+}
+
+svg .svg-c {
+    fill: #005af0
+}
+
+svg.line .svg-c {
+    fill: none;
+    stroke: #005af0
+}
+
+svg.line,
+svg .line {
+    fill: none;
+    stroke: #161617;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1
+}
+
+.hidden,
+.replaced {
+    display: none
+}
+
+.invisible {
+    visibility: hidden
+}
+
+.clear {
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    float: none;
+    clear: both
+}
+
+.full-close {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    background: transparent;
+    opacity: 0;
+    visibility: hidden
+}
+
+/* Scrollbar Custom */
+html,
+.mainMenu,
+.Blog pre,
+.Blog pre code,
+.Blog code {
+    scrollbar-width: thin
+}
+
+/* Main Content */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0 !important;
+    width: 100%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    color: #48525c;
+    background-color: #fafafc;
+    -webkit-font-smoothing: antialiased;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease
+}
+
+main {
+    display: block;
+    padding: 30px 10px 50px 0;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease
+}
+
+main>*:not(:last-child),
+.sidebar>*:not(:last-child) {
+    margin-bottom: 60px
+}
+
+main>#add-widget {
+    padding-top: 50px
+}
+
+.mainAd .widget {
+    margin: 30px 0 10px
+}
+
+.mainSection {
+    width: 100%;
+    padding: 0 30px 0 250px;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+
+.mainWrapper:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 60px
+}
+
+.mainWrapper:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 170px;
+    height: 170px;
+    border-radius: 0 0 0 200px;
+    background: rgba(0, 0, 0, .02);
+    z-index: -1
+}
+
+.dark-mode .mainWrapper:after {
+    background: rgba(0, 0, 0, .10)
+}
+
+.mainMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fefefe;
+    width: 225px;
+    height: 100%;
+    padding: calc(60px + 15px) 0 0 0;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 0 6px 18px 0 rgba(30, 30, 30, .035)
+}
+
+.mainMenu:hover {
+    overflow-y: auto;
+}
+
+.mainMenu .widget {
+    padding-bottom: 90px
+}
+
+.mainbar {
+    min-height: 100vh;
+    width: calc(…</style>

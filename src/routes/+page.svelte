@@ -1,17 +1,6 @@
 <script lang="ts">
-    import 'video.js/dist/video-js.min.css'
-	import { onDestroy, onMount } from 'svelte';
-    import videojs, { type VideoJsPlayer } from 'video.js';
-
-    let player: VideoJsPlayer;
-
-    onMount(async () => {
-        player = videojs('player', { fluid: true });
-    });
-
-    onDestroy(() => {
-        if (player) player.dispose();
-    });
+    import '../styles.css';
+    import articles from '../database.json';
 </script>
 <style>
     @font-face {
@@ -83,6 +72,8 @@
     }
 
     a {
+        transition: all .1s ease;
+        color: #005af0;
         text-decoration: none;
     }
 
@@ -156,8 +147,116 @@
         font-family: Poppins, sans-serif;
         color: #161617;
     }
+
+    .multipleItems .Blog .blog-posts {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .Blog article {
+        background-color: #fefefe;
+        margin: 0 0 20px;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px 0 rgba(30,30,30,.07);
+    }
+
+    .multipleItems .Blog article {
+        padding: 8px 8px 12px;
+        margin-bottom: 12px;
+        width: calc(50% - 5px);
+        margin-right: 10px;
+    }
+
+    .Blog .post-thumbnail {
+        margin-bottom: 15px;
+    }
+
+    .Blog .post-thumbnail a {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding-top: 52.5%;
+        background-color: #f7f9f8;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .widget .post-thumb {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-width: none;
+        max-height: 100%;
+        transform: translate(-50%, -50%);
+    }
+
+    .Blog .post-label {
+        line-height: 1.58em;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .multipleItems .Blog .post-label {
+        font-size: 10px;
+    }
+
+    .Blog .post-label > *::before {
+        content: '#' attr(data-text);
+    }
+
+    h2 {
+        margin: 0;
+        font-weight: 700;
+        font-family: Poppins, sans-serif;
+        color: #161617;
+    }
+
+    .Blog .post-title {
+        line-height: 1.62em;
+    }
+
+    .multipleItems .Blog .post-title {
+        font-size: 85%;
+    }
+
+    .Blog .post-title a {
+        color: inherit;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .Blog .post-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 12px;
+        color: #48525c;
+    }
+
+    .multipleItems .Blog .post-info {
+        font-size: 10px;
+    }
+
+    .Blog .post-info .post-header {
+        width: calc(100% - 55px);
+    }
+
+    .Blog .post-info .post-header .post-timestamp {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .Blog .post-info .post-header .post-timestamp time::before {
+        content: attr(data-text);
+    }
 </style>
-<div class="mainWrapper" style="height: auto !important;">
+<div class="mainWrapper multipleItems" style="height: auto !important;">
     <header>
         <div class="headerLeft">
             <div id="header-widget">
@@ -177,11 +276,44 @@
                 <div class="mainbar" style="height: auto !important; min-height: 0px !important;">
                     <main style="height: auto !important;">
                         <div>
-                            <div>
+                            <div class="widget Blog">
                                 <div class="widget-title">
                                     <h3>
                                         Latest Posts
                                     </h3>
+                                </div>
+                                <div class="blog-posts">
+                                    {#each articles as { articleTitle, format, source, thumbnail, timestamp, type, typeTitle }}
+                                        {@const href = `/${type}/${format}/${source}/${typeTitle}`}
+                                        <article>
+                                            <div class="post-thumbnail">
+                                                <a {href}>
+                                                    <img class="post-thumb" src={thumbnail} alt={articleTitle}>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <div class="post-label">
+                                                        <a data-text={typeTitle} href="/"> </a>
+                                                    </div>
+                                                    <h2 class="post-title">
+                                                        <a {href}>
+                                                            {articleTitle}
+                                                        </a>
+                                                    </h2>
+                                                    <div class="post-info">
+                                                        <div class="post-header">
+                                                            <div>
+                                                                <div class="post-timestamp">
+                                                                    <time data-text={timestamp}></time>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    {/each}
                                 </div>
                             </div>
                         </div>
