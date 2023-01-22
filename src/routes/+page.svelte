@@ -1,25 +1,12 @@
 <script lang="ts">
-    import videojs, { type VideoJsPlayer } from 'video.js';
     import 'video.js/dist/video-js.min.css'
-    import 'videojs-http-source-selector';
-    import 'videojs-contrib-quality-levels';
-
-    // import 'dashjs';
-    // import 'videojs-contrib-dash';
 	import { onDestroy, onMount } from 'svelte';
+    import videojs, { type VideoJsPlayer } from 'video.js';
 
     let player: VideoJsPlayer;
 
-    onMount(() => {
+    onMount(async () => {
         player = videojs('player', { fluid: true });
-        player.ready(() => {
-            if (!player) return;
-            player.src({
-                src: '/api/youtube/w7MsgsJGkPQ/manifest.mpd',
-                type: 'application/dash+xml'
-            });
-            player.httpSourceSelector();
-        });
     });
 
     onDestroy(() => {
@@ -198,23 +185,6 @@
                                 </div>
                             </div>
                         </div>
-                        <video
-                            autoplay
-                            muted
-                            id="player"
-                            class="video-js"
-                            controls
-                            preload="auto"
-                            poster="//vjs.zencdn.net/v/oceans.png">
-                        <track kind="captions"/>
-                        <p class="vjs-no-js">
-                            To view this video please enable JavaScript, and consider upgrading to a
-                            web browser that
-                            <a href="https://videojs.com/html5-video-support/" target="_blank" rel="noreferrer">
-                            supports HTML5 video
-                            </a>
-                        </p>
-                        </video>
                     </main>
                 </div>
             </div>
