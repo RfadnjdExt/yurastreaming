@@ -1,6 +1,9 @@
 <script lang="ts">
     import '../styles.css';
-    import articles from '../database.json';
+    import date from 'date-and-time';
+	import type { PageData } from './$types';
+
+    export let data: PageData;
 </script>
 <style>
     @font-face {
@@ -255,6 +258,37 @@
     .Blog .post-info .post-header .post-timestamp time::before {
         content: attr(data-text);
     }
+
+    .footbar {
+        padding-bottom: 90px;
+        position: relative;
+        margin-top: 0;
+        padding-top: 30px;
+        color: inherit;
+        font-size: 88%;
+    }
+
+    .mainSection .mainArea {
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footbar .credit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footbar .credit p:last-child {
+        margin: 10px;
+    }
+
+    .footbar .credit p {
+        margin: 20px 0 0;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 </style>
 <div class="mainWrapper multipleItems" style="height: auto !important;">
     <header>
@@ -283,7 +317,7 @@
                                     </h3>
                                 </div>
                                 <div class="blog-posts">
-                                    {#each articles as { articleTitle, format, source, thumbnail, timestamp, type, typeTitle }}
+                                    {#each data.articles as { articleTitle, format, source, thumbnail, timestamp, type, typeTitle }}
                                         {@const href = `/${type}/${format}/${source}/${typeTitle}`}
                                         <article>
                                             <div class="post-thumbnail">
@@ -305,7 +339,7 @@
                                                         <div class="post-header">
                                                             <div>
                                                                 <div class="post-timestamp">
-                                                                    <time data-text={timestamp}></time>
+                                                                    <time data-text={date.format(new Date(timestamp), 'MMMM DD, YYYY')}></time>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -321,5 +355,13 @@
                 </div>
             </div>
         </div>
+        <footer class="mainSection footbar">
+            <div class="mainArea">
+                <div class="credit">
+                    <p>© 2023 ‧ Yurasu Fansub and Yuramedia Link.</p>
+                    <p>All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
