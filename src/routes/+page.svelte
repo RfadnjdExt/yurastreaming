@@ -13,6 +13,7 @@
         font-display: swap;
         src: local(Poppins Bold), local(Poppins-Bold), url(https://fonts.gstatic.com/s/poppins/v13/pxiByp8kv8JHgFVrLCz7V1g.woff) format(woff), url(https://fonts.gstatic.com/s/poppins/v13/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2) format(woff2);
     }
+    
     * {
         box-sizing: border-box;
     }
