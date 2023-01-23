@@ -1,3 +1,6 @@
+<sveltekit:head>
+    <title>Yurasu Streaming</title>
+</sveltekit:head>
 <script lang="ts">
     import '../styles.css';
     import date from 'date-and-time';
@@ -298,7 +301,7 @@
                 <div class="widget">
                     <div class="header-inner">
                         <a href="/">
-                            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjbvXvBf1H8AnWvTksSwrSRxxP0E2tT2qKNkD3IdLsYEmZ6a7vaWppQXv12BElgdL3EcSTB-C83c3-dufIfbMebheyJa5a4ehzi3qSvlR5R6hDa8z_YWzHMc9b2XZx5EY9y1PtXAfQ3XMKFS55_24bJW62QfRtaZrmQjAzEY84ZXSAGlnW14Ab0VLm2bg=w300" alt="Yurasu Fansub">
+                            <img src="/api/drive/yurasubs23.png" alt="Yurasu Fansub">
                         </a>
                     </div>
                 </div>
@@ -323,7 +326,7 @@
                                         <article>
                                             <div class="post-thumbnail">
                                                 <a {href}>
-                                                    <img class="post-thumb" src={thumbnail} alt={articleTitle}>
+                                                    <img class="post-thumb" src={`/api/drive${href}/${thumbnail}`} alt={articleTitle}>
                                                 </a>
                                             </div>
                                             <div>
