@@ -1,10 +1,17 @@
 <script lang="ts">
+    import 'video.js';
+    import 'video.js/dist/video-js.min.css';
     import '../../styles.css'
     import date from 'date-and-time';
+    import Header from '../header.svelte';
+    import Footer from '../footer.svelte';
 	import type { PageData } from "./$types";
 
     export let data: PageData;
+
     const { article } = data;
+    const { articleTitle, format, source, thumbnail, timestamp, type, typeTitle } = article;
+    const href = `/${type}/${format}/${source}/${typeTitle}`;
 </script>
 <style>
     @font-face {
@@ -38,52 +45,10 @@
         z-index: -1;
     }
 
-    header {
-        padding: 0 20px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        width: 100%;
-        height: 60px;
-        background-color: #fefefe;
-        color: #161617;
-        z-index: 50;
-        box-shadow: 0 2px 10px 0 rgba(0,0,0,.07);
-        transition: all .1s ease;
-    }
-
-    header .headerLeft {
-        width: 175px;
-        flex-shrink: 0;
-        display: flex;
-    }
-
-    header #header-widget {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        height: 100%;
-        padding: 0 0 0 23px;
-        overflow: hidden;
-    }
-
-    header .widget {
-        margin: auto 0;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-position: center;
-    }
-
     a {
         transition: all .1s ease;
         color: #005af0;
         text-decoration: none;
-    }
-
-    header .header-inner a {
-        color: inherit;
-        transition: none;
     }
 
     img {
@@ -92,11 +57,6 @@
         max-width: 100%;
         font-size: 10px;
         color: transparent;
-    }
-
-    header .header-inner img {
-        max-width: 150px;
-        max-height: 30px;
     }
 
     .mainSection {
@@ -321,21 +281,17 @@
     .Blog .post-info .post-header .post-timestamp time:before {
         content: attr(data-text);
     }
+
+    .Blog .post .post-entry {
+        font-size: 16px;
+        line-height: 1.65em;
+    }
 </style>
+<sveltekit:head>
+    <title>{articleTitle}</title>
+</sveltekit:head>
 <div class="mainWrapper singleItem" style="height: auto !important;">
-    <header>
-        <div class="headerLeft">
-            <div id="header-widget">
-                <div class="widget">
-                    <div class="header-inner">
-                        <a href="/">
-                            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjbvXvBf1H8AnWvTksSwrSRxxP0E2tT2qKNkD3IdLsYEmZ6a7vaWppQXv12BElgdL3EcSTB-C83c3-dufIfbMebheyJa5a4ehzi3qSvlR5R6hDa8z_YWzHMc9b2XZx5EY9y1PtXAfQ3XMKFS55_24bJW62QfRtaZrmQjAzEY84ZXSAGlnW14Ab0VLm2bg=w300" alt="Yurasu Fansub">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <Header></Header>
     <div style="height: auto !important;">
         <div class="mainSection" style="height: auto !important;">
             <div class="mainContainer mainArea" style="height: auto !important;">
@@ -348,13 +304,13 @@
                                         <div>
                                             <a href="/">
                                                 <span>
-                                                    {article?.typeTitle}
+                                                    {typeTitle}
                                                 </span>
                                             </a>
                                         </div>
                                         <div class="title-link">
                                             <span>
-                                                {article?.articleTitle}
+                                                {articleTitle}
                                             </span>
                                         </div>
                                     </div>
@@ -362,7 +318,7 @@
                                         <div>
                                             <div class="post-headline">
                                                 <h1 class="post-title">
-                                                    {article?.articleTitle}
+                                                    {articleTitle}
                                                 </h1>
                                                 <div class="post-info">
                                                     <div class="post-header">
@@ -381,13 +337,21 @@
                                                         </div>
                                                         <div class="post-published">
                                                             <div class="post-timestamp" data-update="Published">
-                                                                <time data-text={date.format(new Date(article?.timestamp), 'MMMM DD, YYYY')}></time>
+                                                                <time data-text={date.format(new Date(timestamp), 'MMMM DD, YYYY')}></time>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="post-entry"></div>
+                                            <div class="post-entry" style="height: auto !important;">
+                                                <div style="height: auto !important;">
+                                                    <div style="clear: both;">
+                                                        <video class="video-js" controls id="player" poster="" preload="auto" src={`/api/drive${href}/video.mp4`}>
+                                                            <track kind="captions">
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </article>
                                 </div>
@@ -397,5 +361,6 @@
                 </div>
             </div>
         </div>
+        <Footer></Footer>
     </div>
 </div>

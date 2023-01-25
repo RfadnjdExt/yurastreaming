@@ -4,6 +4,8 @@
 <script lang="ts">
     import '../styles.css';
     import date from 'date-and-time';
+	import Header from './header.svelte';
+	import Footer from './footer.svelte';
 	import type { PageData } from './$types';
 
     export let data: PageData;
@@ -41,52 +43,10 @@
         z-index: -1;
     }
 
-    header {
-        padding: 0 20px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        width: 100%;
-        height: 60px;
-        background-color: #fefefe;
-        color: #161617;
-        z-index: 50;
-        box-shadow: 0 2px 10px 0 rgba(0,0,0,.07);
-        transition: all .1s ease;
-    }
-
-    header .headerLeft {
-        width: 175px;
-        flex-shrink: 0;
-        display: flex;
-    }
-
-    header #header-widget {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        height: 100%;
-        padding: 0 0 0 23px;
-        overflow: hidden;
-    }
-
-    header .widget {
-        margin: auto 0;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-position: center;
-    }
-
     a {
         transition: all .1s ease;
         color: #005af0;
         text-decoration: none;
-    }
-
-    header .header-inner a {
-        color: inherit;
-        transition: none;
     }
 
     img {
@@ -94,11 +54,6 @@
         position: relative;
         font-size: 10px;
         color: transparent;
-    }
-
-    header .header-inner img {
-        max-width: 150px;
-        max-height: 30px;
     }
 
     .mainSection {
@@ -263,51 +218,14 @@
         content: attr(data-text);
     }
 
-    .footbar {
-        padding-bottom: 90px;
-        position: relative;
-        margin-top: 0;
-        padding-top: 30px;
-        color: inherit;
-        font-size: 88%;
-    }
-
     .mainSection .mainArea {
         max-width: 640px;
         margin-left: auto;
         margin-right: auto;
     }
-
-    .footbar .credit {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footbar .credit p:last-child {
-        margin: 10px;
-    }
-
-    .footbar .credit p {
-        margin: 20px 0 0;
-        overflow: hidden;
-        white-space: nowrap;
-    }
 </style>
 <div class="mainWrapper multipleItems" style="height: auto !important;">
-    <header>
-        <div class="headerLeft">
-            <div id="header-widget">
-                <div class="widget">
-                    <div class="header-inner">
-                        <a href="/">
-                            <img src="/api/drive/yurasubs23.png" alt="Yurasu Fansub">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <Header></Header>
     <div style="height: auto !important;">
         <div class="mainSection" style="height: auto !important;">
             <div class="mainContainer mainArea" style="height: auto !important;">
@@ -359,13 +277,6 @@
                 </div>
             </div>
         </div>
-        <footer class="mainSection footbar">
-            <div class="mainArea">
-                <div class="credit">
-                    <p>© 2023 ‧ Yurasu Fansub and Yuramedia Link.</p>
-                    <p>All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
+        <Footer></Footer>
     </div>
 </div>
