@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createReadStream } from 'fs';
 import type { AxiosResponse } from "axios";
 import type { RequestEvent } from "@sveltejs/kit";
 
@@ -95,8 +96,8 @@ async function fetchData(raw: string[] | undefined, req?: RequestEvent): Promise
 
     const params = new URLSearchParams({ alt: 'media' });
     
-    // let res = await axios.get(`https://www.googleapis.com/drive/v3/files/${item?.id}?${params}`, { headers: { range: req ? req.request.headers.get('range'): null, ...collection.authorization }, responseType: 'stream' });
-    return await fetch(`https://www.googleapis.com/drive/v3/files/${item?.id}?${params}`, { headers: { ...collection.authorization, Range: req?.request.headers.get('Range')! } })
+    const response = await axios.get(`https://www.googleapis.com/drive/v3/files/${item?.id}?${params}`, { headers: { range: req ? req.request.headers.get('range'): null, ...collection.authorization }, responseType: 'stream' });
+    // return await fetch(`https://www.googleapis.com/drive/v3/files/${item?.id}?${params}`, { headers: { ...collection.authorization, Range: req?.request.headers.get('Range')! } })
 };
 
 export async function GET(req: RequestEvent) {

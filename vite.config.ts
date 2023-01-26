@@ -7,6 +7,11 @@ const config: UserConfig = {
 		proxy: {
 			'/favicon.ico': {
 				target: '/api/drive/favicon.ico'
+			},
+			'/api/drive': {
+				target: 'https://hidden-field-da35.yurasubs.workers.dev',
+				changeOrigin: true,
+				rewrite: path => path.replace(/^\/api\/drive/, '')
 			}
 		}
 	}
