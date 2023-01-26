@@ -95,12 +95,9 @@ async function fetchData(raw: string[] | undefined, req?: RequestEvent): Promise
 
     const params = new URLSearchParams({ alt: 'media' });
     
-    // let res = await axios.get(`https://www.googleapis.com/drive/v3/files/${item?.id}?${params}`, { headers: { range: req ? req.request.headers.get('range'): null, ...collection.authorization }, responseType: 'stream' });
-    let res = await fetch(`https://www.googleapis.com/drive/v3/files/${item?.id}?${params}`, { headers: { ...collection.authorization, Range: req?.request.headers.get('Range')! } })
-    const { headers } = (res = new Response(res.body, res));
-
-    headers.set('cache-control', 'max-age=31536000');
-    return res;
+    let res = await axios.get(`https://www.googleapis.com/drive/v3/files/${item?.id}?${params}`, { headers: { range: req ? req.request.headers.get('range'): null, ...collection.authorization }, responseType: 'stream' });
+    // let res = await fetch(`https://www.googleapis.com/drive/v3/files/${item?.id}?${params}`, { headers: { ...collection.authorization, Range: req?.request.headers.get('Range')! } })
+    return new Response(res.data, { headers: Object(res.headers) });
 };
 
 export async function GET(req: RequestEvent) {
