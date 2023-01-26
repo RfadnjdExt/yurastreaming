@@ -52,7 +52,7 @@
             <div class="widget">
                 <div class="header-inner">
                     <a href="/">
-                        <img src="/api/drive/yurasubs23.png" alt="Yurasu Fansub">
+                        <img src="/drive/yurasubs23.png" alt="Yurasu Fansub">
                     </a>
                 </div>
             </div>

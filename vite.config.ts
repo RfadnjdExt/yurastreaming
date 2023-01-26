@@ -8,7 +8,7 @@ const config: UserConfig = {
 			'/favicon.ico': {
 				target: '/api/drive/favicon.ico'
 			},
-			'/api/drive': {
+			'/drive': {
 				target: 'https://hidden-field-da35.yurasubs.workers.dev',
 				changeOrigin: true,
 				rewrite: path => path.replace(/^\/api\/drive/, '')

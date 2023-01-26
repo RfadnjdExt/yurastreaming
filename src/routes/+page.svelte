@@ -244,7 +244,7 @@
                                         <article>
                                             <div class="post-thumbnail">
                                                 <a {href}>
-                                                    <img class="post-thumb" src={`/api/drive${href}/${thumbnail}`} alt={articleTitle}>
+                                                    <img class="post-thumb" src={`/drive${href}/${thumbnail}`} alt={articleTitle}>
                                                 </a>
                                             </div>
                                             <div>
