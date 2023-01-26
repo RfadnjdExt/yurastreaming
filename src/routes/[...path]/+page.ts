@@ -1,5 +1,5 @@
 import type { PageLoad } from "../$types";
-import articles from '../../database.json';
+import articles from '$lib/database.json';
 
 export const load: PageLoad = ({ params }) => {
     const { path } = params as { path: string }

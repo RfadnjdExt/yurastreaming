@@ -5,13 +5,10 @@ const config: UserConfig = {
 	plugins: [sveltekit()],
 	server: {
 		proxy: {
-			'/favicon.ico': {
-				target: '/api/drive/favicon.ico'
-			},
 			'/drive': {
 				target: 'https://hidden-field-da35.yurasubs.workers.dev',
 				changeOrigin: true,
-				rewrite: path => path.replace(/^\/api\/drive/, '')
+				rewrite: path => path.replace(/^\/drive/, '')
 			}
 		}
 	}
