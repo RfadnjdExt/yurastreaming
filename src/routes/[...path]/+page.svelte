@@ -346,7 +346,7 @@
                                             <div class="post-entry" style="height: auto !important;">
                                                 <div style="height: auto !important;">
                                                     <div style="clear: both;">
-                                                        <video class="video-js" controls id="player" poster="" preload="auto">
+                                                        <video class="video-js" controls id="player" poster="" preload="auto" data-setup={'{ "fluid": true }'}>
                                                             <source src={`/api/drive${href}/[Dhampit] Gotoubun no Hanayome Movie BD 1080p.mkv`} type="video/mp4">
                                                             <track kind="captions">
                                                         </video>
